@@ -5,11 +5,13 @@ VisualStudioVersion = 16.0.30309.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API", "API\API.csproj", "{F4F6BE54-7211-4DF5-8BEA-F2FCF2A9342A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{38C631B3-19D8-4844-B0BD-D38AAE22F41B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "Services\Services.csproj", "{38C631B3-19D8-4844-B0BD-D38AAE22F41B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EF", "EF\EF.csproj", "{541026D9-7E13-47DF-B591-6E134A0DF098}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EF", "EF\EF.csproj", "{541026D9-7E13-47DF-B591-6E134A0DF098}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{BB2C90A3-39CC-495A-9857-D3D877A664E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csproj", "{BB2C90A3-39CC-495A-9857-D3D877A664E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{E57F650E-1590-4A8B-8DC2-D0C8EBFB3F00}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{BB2C90A3-39CC-495A-9857-D3D877A664E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB2C90A3-39CC-495A-9857-D3D877A664E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB2C90A3-39CC-495A-9857-D3D877A664E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E57F650E-1590-4A8B-8DC2-D0C8EBFB3F00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E57F650E-1590-4A8B-8DC2-D0C8EBFB3F00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E57F650E-1590-4A8B-8DC2-D0C8EBFB3F00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E57F650E-1590-4A8B-8DC2-D0C8EBFB3F00}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

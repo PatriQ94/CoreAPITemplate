@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>API</name>
+    </assembly>
+    <members>
+        <member name="M:API.Controllers.AuthController.Register(Models.Contracts.Requests.RegistrationRequest)">
+            <summary>
+            Register a new user
+            </summary>
+        </member>
+        <member name="M:API.Controllers.AuthController.Login(Models.Contracts.Requests.LoginRequest)">
+            <summary>
+            Login with an existing user
+            </summary>
+            <remarks> If login is successful, an access token and a refresh token will be returned </remarks>
+        </member>
+        <member name="M:API.Controllers.AuthController.RefreshToken(Models.Contracts.Requests.RefreshTokenRequest)">
+            <summary>
+            Refresh access token
+            </summary>
+            <remarks> Exchanges refresh token for a newly generated access token </remarks>
+        </member>
+        <member name="M:API.Controllers.CarController.Insert(Models.Contracts.Requests.InsertCarRequest)">
+            <summary>
+            Insert a new car for user
+            </summary>
+        </member>
+        <member name="M:API.Controllers.CarController.Remove(Models.Contracts.Requests.RemoveCarRequest)">
+            <summary>
+            Remove users car by ID
+            </summary>
+        </member>
+        <member name="M:API.Controllers.CarController.GetByUser">
+            <summary>
+            Get all cars for user
+            </summary>
+        </member>
+        <member name="M:API.Controllers.CarController.Update_Kilometers(Models.Contracts.Requests.UpdateCarKilometersRequest)">
+            <summary>
+            Update car kilometers
+            </summary>
+        </member>
+    </members>
+</doc>
