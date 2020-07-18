@@ -63,14 +63,14 @@ You can either run the application through CLI or straight from Visual Studio.
 
   1. Create a folder on local computer to clone the repo, something like `C:\source` will be fine.
 
-  2. Open cmd within newly created folder and clone the [CarAPITemplate repo from Github](https://github.com/PatriQ94/CarAPITemplate) 
+  2. Open cmd within newly created folder and clone the [CoreAPITemplate repo from Github](https://github.com/PatriQ94/CoreAPITemplate.git) 
      ```console
-      git clone https://github.com/PatriQ94/CarAPITemplate.git 
+      git clone https://github.com/PatriQ94/CoreAPITemplate.git 
      ```
 
   3. Run the application
      ```console
-       dotnet run --project ./CarAPIRepoPatternTemplate/CarAPIRepoPatternTemplate/Car.API/Car.API.csproj
+       dotnet run --project ./CoreAPITemplate/API/API.csproj
      ```
 
   4. Launch [https://localhost:5001](https://localhost:5001) in your browser to view the API
@@ -79,20 +79,20 @@ You can either run the application through CLI or straight from Visual Studio.
 
   1. Create a folder on local computer to clone the repo, something like `C:\source` will be fine.
 
-  2. Open cmd within newly created folder and clone the [CarAPITemplate repo from Github](https://github.com/PatriQ94/CarAPITemplate) 
+  2. Open cmd within newly created folder and clone the [CoreAPITemplate repo from Github](https://github.com/PatriQ94/CarAPITemplate) 
      ```console
-      git clone https://github.com/PatriQ94/CarAPITemplate.git 
+      git clone https://github.com/PatriQ94/CoreAPITemplate.git
      ```
 
-  3. Navigate to ``CarAPIRepoPatternTemplate\CarAPIRepoPatternTemplate`` and 
-open ``CarAPIRepoPatternTemplate.sln`` with Visual Studio.
+  3. Navigate to ``CoreAPITemplate`` folder and 
+open ``CoreAPITemplate.sln`` with Visual Studio.
 
-  4. Once the solution is opened, right click the ``Car.API`` project and
+  4. Once the solution is opened, right click the ``API`` project and
 select ``Set as Startup Project`` if it's not selected already.
 
 ![Set As Start Up](DocsImages/SetAsStartUp.png)
 
-  5. The last step is to select ``Car.API`` from the dropdown on top of your screen
+  5. The last step is to select ``API`` from the dropdown on top of your screen
 and press the green triangle to run it.
 
 ![Run The Program](DocsImages/RunTheProgram.png)

@@ -88,7 +88,7 @@ namespace API
             //Add swagger
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Car API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
 
                 //Add "Authorize" button on Swagger UI so we can test JWT tokens with swagger
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
@@ -134,7 +134,7 @@ namespace API
             // specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Car API");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "API");
                 c.RoutePrefix = string.Empty;
             });
 
