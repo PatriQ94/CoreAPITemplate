@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using EF.Query;
+using DataAccess.Query;
 using Models;
 using Models.Repository;
 using System;
@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EF
+namespace DataAccess
 {
     public class UnitOfWork : IUnitOfWork
     {

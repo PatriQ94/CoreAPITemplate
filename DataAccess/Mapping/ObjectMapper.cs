@@ -1,6 +1,9 @@
 ﻿using AutoMapper;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace EF.Mapping
+namespace DataAccess.Mapping
 {
     public class ObjectMapper : Profile
     {

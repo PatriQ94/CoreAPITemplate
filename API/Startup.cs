@@ -1,7 +1,6 @@
 using System;
 using System.Text;
 using AutoMapper;
-using EF;
 using Models;
 using Models.Options;
 using Models.Services;
@@ -16,6 +15,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Serilog;
+using DataAccess;
 
 namespace API
 {
@@ -51,7 +51,7 @@ namespace API
             services.AddHttpClient();
 
             //Add AutoMapper configuration
-            services.AddAutoMapper(typeof(EF.Mapping.ObjectMapper));
+            services.AddAutoMapper(typeof(DataAccess.Mapping.ObjectMapper));
 
             //JWT settings
             JwtSettings jwtSettings = new JwtSettings();

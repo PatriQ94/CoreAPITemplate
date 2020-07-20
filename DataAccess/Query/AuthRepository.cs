@@ -1,11 +1,13 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using Models.Domain;
 using Models.Repository;
-using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
+using System.Text;
 using System.Threading.Tasks;
 
-namespace EF.Query
+namespace DataAccess.Query
 {
     class AuthRepository : Repository<Domain.RefreshToken>, IAuthRepository
     {
@@ -28,7 +30,7 @@ namespace EF.Query
                 if (token != null)
                 {
                     response = _mapper.Map<RefreshToken>(token);
-                }              
+                }
             }
             catch (Exception ex)
             {

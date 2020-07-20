@@ -1,12 +1,13 @@
 ﻿using AutoMapper;
-using Models.Repository;
 using Microsoft.EntityFrameworkCore;
+using Models.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
-namespace EF.Query
+namespace DataAccess.Query
 {
     class CarRepository : Repository<Domain.Car>, ICarRepository
     {
@@ -91,7 +92,7 @@ namespace EF.Query
                 return null;
             }
 
-            return  _mapper.Map<Models.Domain.Car>(carExists);
+            return _mapper.Map<Models.Domain.Car>(carExists);
         }
 
         public async Task<bool> UpdateCarKilometersAsync(int carId, int kilometers)

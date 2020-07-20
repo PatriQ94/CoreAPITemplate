@@ -1,5 +1,5 @@
 using System.Threading.Tasks;
-using EF;
+using DataAccess;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -25,7 +25,7 @@ namespace API
                 using (var serviceScope = host.Services.CreateScope())
                 {
                     var dbContext = serviceScope.ServiceProvider.GetRequiredService<DataContext>();
-                    await dbContext.Database.MigrateAsync();
+                    //await dbContext.Database.MigrateAsync();
                 }
 
                 Log.Information("Application starting up");
