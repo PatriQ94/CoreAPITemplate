@@ -79,7 +79,7 @@ You can either run the application through CLI or straight from Visual Studio.
 
   1. Create a folder on local computer to clone the repo, something like `C:\source` will be fine.
 
-  2. Open cmd within newly created folder and clone the [CoreAPITemplate repo from Github](https://github.com/PatriQ94/CarAPITemplate) 
+  2. Open cmd within newly created folder and clone the [CoreAPITemplate repo from Github](https://github.com/PatriQ94/CoreAPITemplate) 
      ```console
       git clone https://github.com/PatriQ94/CoreAPITemplate.git
      ```
@@ -152,4 +152,4 @@ Below image shows an example of the UI from the VueUITemplate project.
 18.6.2020 | Added Serilog for logging
 19.6.2020 | Added AutoMapper for object mapping
 8.7.2020 and on | Improvements of the documentation
-18.7.2020 and on | Restructured the entire repository
+18.7.2020 | Ported entire codebase from *CarAPITemplate* repository to *CoreAPITemplate* repository due to renaming project and solution files
