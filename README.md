@@ -11,7 +11,8 @@
   <a href="#prerequisites">Prerequisites</a> ◈
   <a href="#build-and-run">Build and run</a> ◈
   <a href="#how-to-test">How to test</a> ◈
-  <a href="#changelog">Changelog</a>
+  <a href="#changelog">Changelog</a> ◈
+  <a href="#license">License</a>
 </p>
 
 ## About
@@ -154,3 +155,9 @@ Below image shows an example of the UI from the VueUITemplate project.
 19.6.2020 | Added AutoMapper for object mapping
 8.7.2020 and on | Improvements of the documentation
 18.7.2020 | Ported entire codebase from *CarAPITemplate* repository to *CoreAPITemplate* repository due to renaming project and solution files
+23.7.2020 | Added license
+
+
+## License
+
+See the [LICENSE](LICENSE.md) file for license rights and limitations (MIT).
