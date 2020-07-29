@@ -11,7 +11,8 @@
   <a href="#prerequisites">Prerequisites</a> ◈
   <a href="#build-and-run">Build and run</a> ◈
   <a href="#how-to-test">How to test</a> ◈
-  <a href="#changelog">Changelog</a>
+  <a href="#changelog">Changelog</a> ◈
+  <a href="#license">License</a>
 </p>
 
 ## About
@@ -35,9 +36,9 @@ that can be seen on the below image.
 
 Highest layer (API) consists of controllers whose job is to authenticate users,
 receive HTTP request and give responses. This layer forwards the requests data
-to the service layer via DI. Service layer contains all the business logic 
-and its main job is processing data. Furthermore, service layer uses 
-UnitOfWork interface obtained through the DI to communicate with the data access layer.
+to the service layer via [DI](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-3.1). 
+Service layer contains all the business logic and its main job is processing data. 
+Furthermore, service layer uses UnitOfWork interface obtained through the DI to communicate with the data access layer.
 Data access layers role is to communicate with the database.
 
 The biggest benefit of such architecture
@@ -45,7 +46,8 @@ is that the service layer is completely decoupled from the data access layer.
 Since data access layer is abstracted away from the business logic, we're enabled
 to change the underlying ORM or swap out the entire data access layer with
 minimal changes. Moreover, such architecture enables us to properly test
-our software with unit and integration tests with numerous frameworks and tools
+our software with [unit](http://softwaretestingfundamentals.com/unit-testing/) 
+and [integration](http://softwaretestingfundamentals.com/integration-testing/) tests with numerous frameworks and tools
 to achieve as safe and bug-free code as possible.
 
 ## Prerequisites
@@ -153,3 +155,9 @@ Below image shows an example of the UI from the VueUITemplate project.
 19.6.2020 | Added AutoMapper for object mapping
 8.7.2020 and on | Improvements of the documentation
 18.7.2020 | Ported entire codebase from *CarAPITemplate* repository to *CoreAPITemplate* repository due to renaming project and solution files
+23.7.2020 | Added license
+
+
+## License
+
+See the [LICENSE](LICENSE.md) file for license rights and limitations (MIT).
