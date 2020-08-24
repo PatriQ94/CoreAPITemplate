@@ -41,5 +41,10 @@
             Update car kilometers
             </summary>
         </member>
+        <member name="M:API.Controllers.MovieController.GetByPopularity">
+            <summary>
+            Get all movies by popularity
+            </summary>
+        </member>
     </members>
 </doc>

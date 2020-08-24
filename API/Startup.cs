@@ -16,6 +16,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using DataAccess;
+using TMDbLib.Client;
 
 namespace API
 {
@@ -35,10 +36,16 @@ namespace API
             services.AddDbContext<DataContext>(options => Config.DatabaseConfigOptions(options, Configuration.GetConnectionString("DefaultConnection")));
             services.ConfigureAspNetIdentity();
 
+            //Get secret key for MovieDB access
+            var movieDBSecret = Configuration["MovieDBSecret"];
+            TMDbClient movieClient = new TMDbClient(movieDBSecret);
+
             //Dependency injection
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddTransient<IAuthService, AuthService>();
             services.AddTransient<ICarService, CarService>();
+            services.AddTransient<IMovieService, MovieService>();
+            services.AddSingleton(movieClient);
 
             services.AddCors(options =>
             {
