@@ -14,5 +14,6 @@ namespace Models.Domain
         public string PosterPath { get; set; }
         public double VoteAverage { get; set; }
         public double VoteAverageStar { get; set; }
+        public bool Summary { get; set; }
     }
 }
