@@ -15,5 +15,6 @@ namespace Models.Domain
         public double VoteAverage { get; set; }
         public double VoteAverageStar { get; set; }
         public bool Summary { get; set; }
+        public bool Favourite { get; set; }
     }
 }

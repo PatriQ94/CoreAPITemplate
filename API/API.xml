@@ -46,5 +46,10 @@
             Get all movies by popularity
             </summary>
         </member>
+        <member name="M:API.Controllers.MovieController.GetByKeyWord(Models.Contracts.Requests.GetMovieByKeyWord)">
+            <summary>
+            Get all movies by popularity
+            </summary>
+        </member>
     </members>
 </doc>
