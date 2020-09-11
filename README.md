@@ -156,7 +156,7 @@ Below image shows an example of the UI from the VueUITemplate project.
 8.7.2020 and on | Improvements of the documentation
 18.7.2020 | Ported entire codebase from *CarAPITemplate* repository to *CoreAPITemplate* repository due to renaming project and solution files
 23.7.2020 | Added license
-
+11.9.2020 | Started reworking API (movie search engine), added new tables, services and endpoints.
 
 ## License
 
