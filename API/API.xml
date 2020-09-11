@@ -51,5 +51,35 @@
             Get all movies by popularity
             </summary>
         </member>
+        <member name="M:API.Controllers.UserController.AddMovieToFavourites(Models.Contracts.Requests.MovieIdRequest)">
+            <summary>
+            Adds a movie to the users list of favourite movies
+            </summary>
+        </member>
+        <member name="M:API.Controllers.UserController.GetFavouriteMoviesByUser">
+            <summary>
+            Returns a list of all favourite movies for the user
+            </summary>
+        </member>
+        <member name="M:API.Controllers.UserController.RemoveMovieFromFavourites(Models.Contracts.Requests.MovieIdRequest)">
+            <summary>
+            Removes a movie from the users list of favourite movies
+            </summary>
+        </member>
+        <member name="M:API.Controllers.UserController.AddMovieToSeen(Models.Contracts.Requests.MovieIdRequest)">
+            <summary>
+            Adds a movie to the users list of seen movies
+            </summary>
+        </member>
+        <member name="M:API.Controllers.UserController.GetSeenMoviesByUser">
+            <summary>
+            Returns a list of all seen movies for the user
+            </summary>
+        </member>
+        <member name="M:API.Controllers.UserController.RemoveMovieFromSeenList(Models.Contracts.Requests.MovieIdRequest)">
+            <summary>
+            Removes a movie from the users list of seen movies
+            </summary>
+        </member>
     </members>
 </doc>

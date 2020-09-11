@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Models.Contracts.Requests;
@@ -19,11 +20,13 @@ namespace API.Controllers
 
         private readonly ILogger<MovieController> _logger;
         private readonly IMovieService _movieService;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public MovieController(ILogger<MovieController> logger, IMovieService carService)
+        public MovieController(ILogger<MovieController> logger, IMovieService carService, UserManager<IdentityUser> userManager)
         {
             _logger = logger;
             _movieService = carService;
+            _userManager = userManager;
         }
 
         /// <summary>
@@ -37,7 +40,7 @@ namespace API.Controllers
 
             try
             {
-                response.Value = await _movieService.GetByPopularity();
+                response.Value = await _movieService.GetByPopularity(_userManager.GetUserId(User));
                 return Ok(response);
             }
             catch (Exception ex)
@@ -60,7 +63,7 @@ namespace API.Controllers
 
             try
             {
-                response.Value = await _movieService.GetByKeyWord(request.SearchKeyWord);
+                response.Value = await _movieService.GetByKeyWord(_userManager.GetUserId(User), request.SearchKeyWord);
                 return Ok(response);
             }
             catch (Exception ex)

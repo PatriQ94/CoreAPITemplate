@@ -8,7 +8,6 @@ using Services.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -17,6 +16,7 @@ using Microsoft.OpenApi.Models;
 using Serilog;
 using DataAccess;
 using TMDbLib.Client;
+using Services.Helpers;
 
 namespace API
 {
@@ -45,6 +45,8 @@ namespace API
             services.AddTransient<IAuthService, AuthService>();
             services.AddTransient<ICarService, CarService>();
             services.AddTransient<IMovieService, MovieService>();
+            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IParsers, Parsers>();
             services.AddSingleton(movieClient);
 
             services.AddCors(options =>

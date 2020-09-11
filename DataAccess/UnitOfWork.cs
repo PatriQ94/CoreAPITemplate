@@ -15,6 +15,9 @@ namespace DataAccess
         private readonly IMapper _mapper;
         private CarRepository _carRepository;
         private AuthRepository _authRepository;
+        private UserCommentRepository _userCommentRepository;
+        private UserFavouriteRepository _userFavouriteRepository;
+        private UserSeenRepository _userSeenRepository;
 
         public UnitOfWork(DataContext context, IMapper mapper)
         {
@@ -24,6 +27,10 @@ namespace DataAccess
 
         public ICarRepository Car => _carRepository = _carRepository ?? new CarRepository(_context, _mapper);
         public IAuthRepository Auth => _authRepository = _authRepository ?? new AuthRepository(_context, _mapper);
+
+        public IUserCommentRepository UserComments => _userCommentRepository = _userCommentRepository ?? new UserCommentRepository(_context);
+        public IUserFavouriteRepository UserFavourites => _userFavouriteRepository = _userFavouriteRepository ?? new UserFavouriteRepository(_context);
+        public IUserSeenRepository UserSeens => _userSeenRepository = _userSeenRepository ?? new UserSeenRepository(_context);
 
         public async Task<int> CommitAsync()
         {

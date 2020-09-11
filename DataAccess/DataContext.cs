@@ -17,6 +17,10 @@ namespace DataAccess
         //Tables
         public DbSet<Domain.Car> Car { get; set; }
         public DbSet<Domain.RefreshToken> RefreshTokens { get; set; }
+        public DbSet<Domain.UserFavourite> UserFavourites { get; set; }
+        public DbSet<Domain.UserSeen> UserSeens { get; set; }
+        public DbSet<Domain.UserComment> UserComments { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
