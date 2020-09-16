@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace API.Controllers
 {
+    [ApiExplorerSettings(IgnoreApi = true)]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ApiController]
     public class CarController : ControllerBase
