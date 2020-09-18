@@ -1,7 +1,6 @@
 using System;
 using System.Text;
 using AutoMapper;
-using EF;
 using Models;
 using Models.Options;
 using Models.Services;
@@ -9,13 +8,15 @@ using Services.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Serilog;
+using DataAccess;
+using TMDbLib.Client;
+using Services.Helpers;
 
 namespace API
 {
@@ -35,10 +36,18 @@ namespace API
             services.AddDbContext<DataContext>(options => Config.DatabaseConfigOptions(options, Configuration.GetConnectionString("DefaultConnection")));
             services.ConfigureAspNetIdentity();
 
+            //Get secret key for MovieDB access
+            var movieDBSecret = Configuration["MovieDBSecret"];
+            TMDbClient movieClient = new TMDbClient(movieDBSecret);
+
             //Dependency injection
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddTransient<IAuthService, AuthService>();
             services.AddTransient<ICarService, CarService>();
+            services.AddTransient<IMovieService, MovieService>();
+            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IParsers, Parsers>();
+            services.AddSingleton(movieClient);
 
             services.AddCors(options =>
             {
@@ -51,7 +60,7 @@ namespace API
             services.AddHttpClient();
 
             //Add AutoMapper configuration
-            services.AddAutoMapper(typeof(EF.Mapping.ObjectMapper));
+            services.AddAutoMapper(typeof(DataAccess.Mapping.ObjectMapper));
 
             //JWT settings
             JwtSettings jwtSettings = new JwtSettings();

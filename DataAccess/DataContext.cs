@@ -2,8 +2,11 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace EF
+namespace DataAccess
 {
     public class DataContext : IdentityDbContext<IdentityUser>
     {
@@ -14,6 +17,10 @@ namespace EF
         //Tables
         public DbSet<Domain.Car> Car { get; set; }
         public DbSet<Domain.RefreshToken> RefreshTokens { get; set; }
+        public DbSet<Domain.UserFavourite> UserFavourites { get; set; }
+        public DbSet<Domain.UserSeen> UserSeens { get; set; }
+        public DbSet<Domain.UserComment> UserComments { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

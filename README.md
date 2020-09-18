@@ -11,7 +11,8 @@
   <a href="#prerequisites">Prerequisites</a> ◈
   <a href="#build-and-run">Build and run</a> ◈
   <a href="#how-to-test">How to test</a> ◈
-  <a href="#changelog">Changelog</a>
+  <a href="#changelog">Changelog</a> ◈
+  <a href="#license">License</a>
 </p>
 
 ## About
@@ -35,9 +36,9 @@ that can be seen on the below image.
 
 Highest layer (API) consists of controllers whose job is to authenticate users,
 receive HTTP request and give responses. This layer forwards the requests data
-to the service layer via DI. Service layer contains all the business logic 
-and its main job is processing data. Furthermore, service layer uses 
-UnitOfWork interface obtained through the DI to communicate with the data access layer.
+to the service layer via [DI](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-3.1). 
+Service layer contains all the business logic and its main job is processing data. 
+Furthermore, service layer uses UnitOfWork interface obtained through the DI to communicate with the data access layer.
 Data access layers role is to communicate with the database.
 
 The biggest benefit of such architecture
@@ -45,7 +46,8 @@ is that the service layer is completely decoupled from the data access layer.
 Since data access layer is abstracted away from the business logic, we're enabled
 to change the underlying ORM or swap out the entire data access layer with
 minimal changes. Moreover, such architecture enables us to properly test
-our software with unit and integration tests with numerous frameworks and tools
+our software with [unit](http://softwaretestingfundamentals.com/unit-testing/) 
+and [integration](http://softwaretestingfundamentals.com/integration-testing/) tests with numerous frameworks and tools
 to achieve as safe and bug-free code as possible.
 
 ## Prerequisites
@@ -79,7 +81,7 @@ You can either run the application through CLI or straight from Visual Studio.
 
   1. Create a folder on local computer to clone the repo, something like `C:\source` will be fine.
 
-  2. Open cmd within newly created folder and clone the [CoreAPITemplate repo from Github](https://github.com/PatriQ94/CarAPITemplate) 
+  2. Open cmd within newly created folder and clone the [CoreAPITemplate repo from Github](https://github.com/PatriQ94/CoreAPITemplate) 
      ```console
       git clone https://github.com/PatriQ94/CoreAPITemplate.git
      ```
@@ -116,7 +118,7 @@ all the endpoints that API offers.
 
 ![Swagger](DocsImages/Swagger.png)
 
-It is important to notice that all ``Car`` endpoints require you to be authorized
+It is important to notice that all ``Movie`` and ``User`` endpoints require you to be authorized
 in order to access their functionalities. To do so, you need to either register or login. 
 Once that is done, you will receive two JWT tokens: an access token and a refresh
 token. Afterwards, you press the green ``Authorize`` button on the right side, enter 
@@ -125,7 +127,7 @@ shown on the image below.
 
 ![J W T](DocsImages/JWT.png)
 
-This will grant you access to Car endpoints until your access token has expired. 
+This will grant you access to all endpoints until your access token has expired. 
 Then, you will have use the ``/api/Auth/RefreshToken`` endpoint, to gain a newly
 generated access and refresh tokens.
 
@@ -136,7 +138,7 @@ application to simulate a real world scenario feel free to check
 out [my other project aswell.](https://github.com/PatriQ94/VueUITemplate)
 Below image shows an example of the UI from the VueUITemplate project.
 
-![Garage](DocsImages/Garage.png)
+![Movies](DocsImages/movies.png)
 
 ### Changelog
 
@@ -152,4 +154,10 @@ Below image shows an example of the UI from the VueUITemplate project.
 18.6.2020 | Added Serilog for logging
 19.6.2020 | Added AutoMapper for object mapping
 8.7.2020 and on | Improvements of the documentation
-18.7.2020 and on | Restructured the entire repository
+18.7.2020 | Ported entire codebase from *CarAPITemplate* repository to *CoreAPITemplate* repository due to renaming project and solution files
+23.7.2020 | Added license
+11.9.2020 | Started reworking API (movie search engine), added new tables, services and endpoints.
+
+## License
+
+See the [LICENSE](LICENSE.md) file for license rights and limitations (MIT).
