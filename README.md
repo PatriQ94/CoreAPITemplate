@@ -118,7 +118,7 @@ all the endpoints that API offers.
 
 ![Swagger](DocsImages/Swagger.png)
 
-It is important to notice that all ``Car`` endpoints require you to be authorized
+It is important to notice that all ``Movie`` and ``User`` endpoints require you to be authorized
 in order to access their functionalities. To do so, you need to either register or login. 
 Once that is done, you will receive two JWT tokens: an access token and a refresh
 token. Afterwards, you press the green ``Authorize`` button on the right side, enter 
@@ -127,7 +127,7 @@ shown on the image below.
 
 ![J W T](DocsImages/JWT.png)
 
-This will grant you access to Car endpoints until your access token has expired. 
+This will grant you access to all endpoints until your access token has expired. 
 Then, you will have use the ``/api/Auth/RefreshToken`` endpoint, to gain a newly
 generated access and refresh tokens.
 
@@ -138,7 +138,7 @@ application to simulate a real world scenario feel free to check
 out [my other project aswell.](https://github.com/PatriQ94/VueUITemplate)
 Below image shows an example of the UI from the VueUITemplate project.
 
-![Garage](DocsImages/Garage.png)
+![Movies](DocsImages/movies.png)
 
 ### Changelog
 
