@@ -32,8 +32,22 @@ namespace API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //Database configuration
-            services.AddDbContext<DataContext>(options => Config.DatabaseConfigOptions(options, Configuration.GetConnectionString("DefaultConnection")));
+            //Database connection data, WARNING: DO NEVER USER SA USER, this is just to showcase 
+            var server = Configuration["DBServer"] ?? "localhost";
+            var port = Configuration["DBPort"] ?? "1433";
+            var user = Configuration["DBUser"] ?? "sa";
+            var password = Configuration["DBPassword"] ?? "Your_password123";
+            var Database = Configuration["Database"] ?? "MovieAPI";
+
+            //Database connection for docker
+            string connectionString = $"Server={server},{port};Initial Catalog={Database};User ID={user};Password={password};";
+            Console.WriteLine($"Connection string: {connectionString}");
+
+            services.AddDbContext<DataContext>(options => Config.DatabaseConfigOptions(options, connectionString));
+
+            //Database connection for LocalDB
+            //services.AddDbContext<DataContext>(options => Config.DatabaseConfigOptions(options, Configuration.GetConnectionString("DefaultConnection")));
+            
             services.ConfigureAspNetIdentity();
 
             //Get secret key for MovieDB access
