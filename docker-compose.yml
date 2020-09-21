@@ -7,13 +7,13 @@ services:
       context: .
       dockerfile: API\Dockerfile
     ports:
-      - "8080:80"
-      - "8081:443"
+      - "5000:80"
+      - "5001:443"
     environment:
       DBServer: "db"
       ASPNETCORE_ENVIRONMENT: "Development"
       ASPNETCORE_URLS: "https://+:443;http://+:80"
-      ASPNETCORE_HTTPS_PORT: "8081"
+      ASPNETCORE_HTTPS_PORT: "5001"
       ASPNETCORE_Kestrel__Certificates__Default__Password: "CertPass123"
       ASPNETCORE_Kestrel__Certificates__Default__Path: "C:\\https\\API.pfx"
     volumes:
