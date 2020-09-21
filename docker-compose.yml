@@ -13,7 +13,7 @@ services:
       DBServer: "db"
       ASPNETCORE_ENVIRONMENT: "Development"
       ASPNETCORE_URLS: "https://+:443;http://+:80"
-      ASPNETCORE_HTTPS_PORT: "5001"
+      ASPNETCORE_HTTPS_PORT: "443"
       ASPNETCORE_Kestrel__Certificates__Default__Password: "CertPass123"
       ASPNETCORE_Kestrel__Certificates__Default__Path: "C:\\https\\API.pfx"
     volumes:
@@ -27,5 +27,7 @@ services:
     environment:
       ACCEPT_EULA: "Y"
       sa_password: "Your_password123"
+    expose:
+      - "1433"
     ports:
       - "1433:1433"
