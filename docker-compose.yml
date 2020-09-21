@@ -2,13 +2,22 @@ version: '3.4'
 
 services:
   api:
+    container_name: api
     build:
       context: .
       dockerfile: API\Dockerfile
-    environment:
-      DBServer: "db"
     ports:
       - "8080:80"
+      - "8081:443"
+    environment:
+      DBServer: "db"
+      ASPNETCORE_ENVIRONMENT: "Development"
+      ASPNETCORE_URLS: "https://+:443;http://+:80"
+      ASPNETCORE_HTTPS_PORT: "8081"
+      ASPNETCORE_Kestrel__Certificates__Default__Password: "CertPass123"
+      ASPNETCORE_Kestrel__Certificates__Default__Path: "C:\\https\\API.pfx"
+    volumes:
+      - .\https:C:\https:ro
     depends_on:
       db:
         condition: service_healthy
