@@ -28,7 +28,7 @@ services:
     environment:
       ACCEPT_EULA: "Y"
       SA_PASSWORD: "Your_password123"
-      MSSQL_PID : Express
+      MSSQL_PID : Developer
     expose:
       - "1433"
     ports:
