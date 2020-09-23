@@ -3,9 +3,10 @@ version: '3.4'
 services:
   api:
     container_name: api
+    image: ${DOCKER_REGISTRY-}api
     build:
       context: .
-      dockerfile: API\Dockerfile
+      dockerfile: API/Dockerfile
     ports:
       - "5000:80"
       - "5001:443"
@@ -15,19 +16,21 @@ services:
       ASPNETCORE_URLS: "https://+:443;http://+:80"
       ASPNETCORE_HTTPS_PORT: "443"
       ASPNETCORE_Kestrel__Certificates__Default__Password: "CertPass123"
-      ASPNETCORE_Kestrel__Certificates__Default__Path: "C:\\https\\API.pfx"
+      ASPNETCORE_Kestrel__Certificates__Default__Path: "/https/API.pfx"
     volumes:
-      - .\https:C:\https:ro
+      - ./https/API.pfx:/https/API.pfx:ro
     depends_on:
-      db:
-        condition: service_healthy
+      - db
+    restart: always
   db:
     container_name: db
-    image: microsoft/mssql-server-windows-developer
+    image: mcr.microsoft.com/mssql/server:latest
     environment:
       ACCEPT_EULA: "Y"
-      sa_password: "Your_password123"
+      SA_PASSWORD: "Your_password123"
+      MSSQL_PID : Express
     expose:
       - "1433"
     ports:
       - "1433:1433"
+    restart: always

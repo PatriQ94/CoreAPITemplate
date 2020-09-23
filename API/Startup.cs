@@ -17,6 +17,8 @@ using Serilog;
 using DataAccess;
 using TMDbLib.Client;
 using Services.Helpers;
+using System.Reflection;
+using System.IO;
 
 namespace API
 {
@@ -137,7 +139,11 @@ namespace API
                             new string[] {}
                     }
                 });
-                c.IncludeXmlComments(string.Format(@"{0}\API.xml", System.AppDomain.CurrentDomain.BaseDirectory));
+
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+                //c.IncludeXmlComments(string.Format(@"{0}\API.xml", System.AppDomain.CurrentDomain.BaseDirectory));
             });
         }
 
