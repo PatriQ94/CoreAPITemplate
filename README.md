@@ -24,6 +24,7 @@ with [EntityFramework Core](https://docs.microsoft.com/en-us/ef/core/) as the ch
 ORM. It also includes [Moq](https://github.com/moq/moq4) to enable near 100% unit test coverage, 
 [Serilog](https://github.com/serilog/serilog) for event logging 
 and [AutoMapper](https://docs.automapper.org/en/stable/Getting-started.html#what-is-automapper) for object mapping.
+The entire project is also [dockerized](https://www.docker.com/) for easier deployement.
 
 **The main purpose of the project is to be used as a reference implementation in
 case of need.**
