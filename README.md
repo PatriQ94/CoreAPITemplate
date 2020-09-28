@@ -53,31 +53,76 @@ to achieve as safe and bug-free code as possible.
 ## Prerequisites
 You will need the following tools:
 
-* [SQL Server Express LocalDB](https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/sql-server-express-localdb?view=sql-server-ver15)
-* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/community/) (version 16.6 or later)
-* [.NET Core SDK 3.1](https://dotnet.microsoft.com/download/dotnet-core/3.1)
+* [Docker](https://www.docker.com/products/docker-desktop)
+* [.NET Core SDK 3.1](https://dotnet.microsoft.com/download/dotnet-core/3.1) (optional)
+* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/community/) (optional, version 16.6 or later)
 
 ## Build and run
 
-You can either run the application through CLI or straight from Visual Studio.
+The project consists of two parts: the application and the database.
+There are **four ways** of building and running it, depending on our needs. The first and easiest way is running
+it with Docker only, the second and third way are a combination of VS and Docker, 
+the fourth and last one is with CLI and Docker.
 
-#### Run from CLI
+#### 1. Run with Docker
+This method spins up two docker containers, 
+one for the app and one for the database. It is the fastest and easiest
+way of running and testing the app.
 
   1. Create a folder on local computer to clone the repo, something like `C:\source` will be fine.
 
   2. Open cmd within newly created folder and clone the [CoreAPITemplate repo from Github](https://github.com/PatriQ94/CoreAPITemplate.git) 
      ```console
       git clone https://github.com/PatriQ94/CoreAPITemplate.git 
+      cd CoreAPITemplate
      ```
 
-  3. Run the application
+  3. Build with docker compose
      ```console
-       dotnet run --project ./CoreAPITemplate/API/API.csproj
+       docker-compose build
      ```
 
-  4. Launch [https://localhost:5001](https://localhost:5001) in your browser to view the API
+  4. Run with docker compose
+     ```console
+       docker-compose run
+     ```
 
-#### Run from Visual Studio
+  4. Launch [https://localhost:5001/index.html](https://localhost:5001/index.html) 
+  in your browser to view the API
+
+#### 2. Run app with Visual Studio and database with Docker
+This method spins up a container with the database to which app running in Visual Studio connects to.
+It is the recommended method for development and testing.
+
+  1. Run the MSSQL container
+     ```console
+       docker run --name MovieDatabase -d -p 1433:1433 -e SA_PASSWORD=Secret_dbpass69 -e ACCEPT_EULA=Y mcr.microsoft.com/mssql/server:latest
+     ```  
+
+  2. Create a folder on local computer to clone the repo, something like `C:\source` will be fine.
+
+  3. Open cmd within newly created folder and clone the [CoreAPITemplate repo from Github](https://github.com/PatriQ94/CoreAPITemplate) 
+     ```console
+      git clone https://github.com/PatriQ94/CoreAPITemplate.git
+     ```
+
+  4. Navigate to ``CoreAPITemplate`` folder and 
+open ``CoreAPITemplate.sln`` with Visual Studio.
+
+  5. Once the solution is opened, right click the ``API`` project and
+select ``Set as Startup Project`` if it's not selected already.
+
+  6. The last step is to select ``API`` from the dropdown on top of your screen
+and press the green triangle to run it.
+
+![Run The Program](DocsImages/RunTheProgram.png)
+
+  7. Launch [https://localhost:5001/index.html](https://localhost:5001/index.html) in your browser to view the API
+   
+#### 3. Run app and database from Visual Studio
+This is a mix of the first and second method as we spin up both docker containers
+from within Visual Studio except it enables us easy debugging so it is 
+another good way for development purposes.
 
   1. Create a folder on local computer to clone the repo, something like `C:\source` will be fine.
 
@@ -89,18 +134,37 @@ You can either run the application through CLI or straight from Visual Studio.
   3. Navigate to ``CoreAPITemplate`` folder and 
 open ``CoreAPITemplate.sln`` with Visual Studio.
 
-  4. Once the solution is opened, right click the ``API`` project and
+  4. Once the solution is opened, right click the ``docker-compose`` project and
 select ``Set as Startup Project`` if it's not selected already.
 
-![Set As Start Up](DocsImages/SetAsStartUp.png)
-
-  5. The last step is to select ``API`` from the dropdown on top of your screen
+  5. The last step is to select ``Docker Compose`` from the dropdown on top of your screen
 and press the green triangle to run it.
 
-![Run The Program](DocsImages/RunTheProgram.png)
+![Run The Program](DocsImages/RunDockerCompose.png)
 
-  6. Launch [https://localhost:5001](https://localhost:5001) in your browser to view the API
+  6. Launch [https://localhost:5001/index.html](https://localhost:5001/index.html) in your browser to view the API
    
+#### 4. Run from CLI
+
+  1. Run the MSSQL container
+     ```console
+       docker run --name MovieDatabase -d -p 1433:1433 -e SA_PASSWORD=Secret_dbpass69 -e ACCEPT_EULA=Y mcr.microsoft.com/mssql/server:latest
+     ```  
+
+  2. Create a folder on local computer to clone the repo, something like `C:\source` will be fine.
+
+  3. Open cmd within newly created folder and clone the [CoreAPITemplate repo from Github](https://github.com/PatriQ94/CoreAPITemplate.git) 
+     ```console
+      git clone https://github.com/PatriQ94/CoreAPITemplate.git 
+     ```
+
+  4. Run the application
+     ```console
+       dotnet run --project ./CoreAPITemplate/API/API.csproj
+     ```
+
+  5. Launch [https://localhost:5001/index.html](https://localhost:5001/index.html) in your browser to view the API
+
 ## How to test
 
 There is a plethora of ways to test this project and all its functionalities. 
@@ -157,6 +221,7 @@ Below image shows an example of the UI from the VueUITemplate project.
 18.7.2020 | Ported entire codebase from *CarAPITemplate* repository to *CoreAPITemplate* repository due to renaming project and solution files
 23.7.2020 | Added license
 11.9.2020 | Started reworking API (movie search engine), added new tables, services and endpoints.
+28.9.2020 | Added Docker support
 
 ## License
 
