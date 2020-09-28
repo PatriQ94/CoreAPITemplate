@@ -12,6 +12,10 @@ services:
       - "5001:443"
     environment:
       DBServer: "db"
+      DBPort: "1433"
+      DBUser: "SA"
+      DBPassword: "Secret_dbpass69"
+      Database: "MovieAPI"
       ASPNETCORE_ENVIRONMENT: "Development"
       ASPNETCORE_URLS: "https://+:443;http://+:80"
       ASPNETCORE_HTTPS_PORT: "443"
@@ -22,12 +26,13 @@ services:
     depends_on:
       - db
     restart: always
+    entrypoint: ["./wait-for-it.sh", "db:1433", "-t", "30", "--", "dotnet", "API.dll"]
   db:
     container_name: db
     image: mcr.microsoft.com/mssql/server:latest
     environment:
       ACCEPT_EULA: "Y"
-      SA_PASSWORD: "Your_password123"
+      SA_PASSWORD: "Secret_dbpass69"
       MSSQL_PID : Developer
     expose:
       - "1433"

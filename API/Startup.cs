@@ -37,18 +37,13 @@ namespace API
             //Database connection data, WARNING: DO NEVER USER SA USER, this is just to showcase 
             var server = Configuration["DBServer"] ?? "localhost";
             var port = Configuration["DBPort"] ?? "1433";
-            var user = Configuration["DBUser"] ?? "sa";
-            var password = Configuration["DBPassword"] ?? "Your_password123";
+            var user = Configuration["DBUser"] ?? "SA";
+            var password = Configuration["DBPassword"] ?? "Secret_dbpass69";
             var Database = Configuration["Database"] ?? "MovieAPI";
 
             //Database connection for docker
             string connectionString = $"Server={server},{port};Initial Catalog={Database};User ID={user};Password={password};";
-            Console.WriteLine($"Connection string: {connectionString}");
-
             services.AddDbContext<DataContext>(options => Config.DatabaseConfigOptions(options, connectionString));
-
-            //Database connection for LocalDB
-            //services.AddDbContext<DataContext>(options => Config.DatabaseConfigOptions(options, Configuration.GetConnectionString("DefaultConnection")));
             
             services.ConfigureAspNetIdentity();
 

@@ -23,3 +23,8 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "API.dll"]
+
+# Copy wait-for-it.sh into our image
+COPY wait-for-it.sh wait-for-it.sh
+# Make it executable, in Linux
+RUN chmod +x wait-for-it.sh
