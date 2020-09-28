@@ -17,6 +17,8 @@ using Serilog;
 using DataAccess;
 using TMDbLib.Client;
 using Services.Helpers;
+using System.Reflection;
+using System.IO;
 
 namespace API
 {
@@ -32,8 +34,17 @@ namespace API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //Database configuration
-            services.AddDbContext<DataContext>(options => Config.DatabaseConfigOptions(options, Configuration.GetConnectionString("DefaultConnection")));
+            //Database connection data, WARNING: DO NEVER USER SA USER, this is just to showcase 
+            var server = Configuration["DBServer"] ?? "localhost";
+            var port = Configuration["DBPort"] ?? "1433";
+            var user = Configuration["DBUser"] ?? "SA";
+            var password = Configuration["DBPassword"] ?? "Secret_dbpass69";
+            var Database = Configuration["Database"] ?? "MovieAPI";
+
+            //Database connection for docker
+            string connectionString = $"Server={server},{port};Initial Catalog={Database};User ID={user};Password={password};";
+            services.AddDbContext<DataContext>(options => Config.DatabaseConfigOptions(options, connectionString));
+            
             services.ConfigureAspNetIdentity();
 
             //Get secret key for MovieDB access
@@ -123,7 +134,11 @@ namespace API
                             new string[] {}
                     }
                 });
-                c.IncludeXmlComments(string.Format(@"{0}\API.xml", System.AppDomain.CurrentDomain.BaseDirectory));
+
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+                //c.IncludeXmlComments(string.Format(@"{0}\API.xml", System.AppDomain.CurrentDomain.BaseDirectory));
             });
         }
 
