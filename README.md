@@ -85,7 +85,7 @@ way of running and testing the app.
 
   4. Run with docker compose
      ```console
-       docker-compose run
+       docker-compose up
      ```
 
   4. Launch [https://localhost:5001/index.html](https://localhost:5001/index.html) 
