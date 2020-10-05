@@ -32,29 +32,6 @@ namespace API.Controllers
         /// <summary>
         /// Get all movies by popularity
         /// </summary>
-        [HttpGet]
-        [Route("api/Movie/GetByPopularity")]
-        public async Task<ActionResult> GetByPopularity()
-        {
-            APIResponse<List<Movie>> response = new APIResponse<List<Movie>>();
-
-            try
-            {
-                response.Value = await _movieService.GetByPopularity(_userManager.GetUserId(User));
-                return Ok(response);
-            }
-            catch (Exception ex)
-            {
-                response.ErrorMessage = ex.Message;
-                _logger.LogError(ex.Message);
-            }
-
-            return BadRequest(response);
-        }
-
-        /// <summary>
-        /// Get all movies by popularity
-        /// </summary>
         [HttpPost]
         [Route("api/Movie/GetByKeyWords")]
         public async Task<ActionResult> GetByKeyWord([FromBody] GetMovieByKeyWord request)
@@ -63,7 +40,7 @@ namespace API.Controllers
 
             try
             {
-                response.Value = await _movieService.GetByKeyWord(_userManager.GetUserId(User), request.SearchKeyWord);
+                response.Value = await _movieService.GetByKeyWord(_userManager.GetUserId(User), request.SearchKeyWord, request.Page);
                 return Ok(response);
             }
             catch (Exception ex)

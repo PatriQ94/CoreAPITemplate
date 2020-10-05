@@ -9,6 +9,7 @@ namespace Services.Helpers
 {
     public class Parsers : IParsers
     {
+        private string NotAvailableURL = "https://www.ancora-collanti.com/wp-content/plugins/ultimate-product-catalogue/images/No-Photo-Available.png";
         public ILogger<Parsers> _logger { get; }
 
         public Parsers(ILogger<Parsers> logger)
@@ -47,7 +48,7 @@ namespace Services.Helpers
                 TitleFull = movie.Title,
                 ReleaseDate = movie.ReleaseDate != null ? movie.ReleaseDate.Value.Year.ToString() : "N/A",
                 Overview = movie.Overview,
-                PosterPath = $"https://image.tmdb.org/t/p/w185/{movie.PosterPath}",
+                PosterPath = !string.IsNullOrEmpty(movie.PosterPath) ? $"https://image.tmdb.org/t/p/w342/{movie.PosterPath}" : NotAvailableURL,
                 VoteAverage = movie.VoteAverage,
                 VoteAverageStar = movie.VoteAverage * 5 / 10,
                 Favourite = fav,
@@ -87,7 +88,7 @@ namespace Services.Helpers
                 TitleFull = movie.Title,
                 ReleaseDate = movie.ReleaseDate != null ? movie.ReleaseDate.Value.Year.ToString() : "N/A",
                 Overview = movie.Overview,
-                PosterPath = $"https://image.tmdb.org/t/p/w185/{movie.PosterPath}",
+                PosterPath = !string.IsNullOrEmpty(movie.PosterPath) ? $"https://image.tmdb.org/t/p/w342/{movie.PosterPath}" : NotAvailableURL,
                 VoteAverage = movie.VoteAverage,
                 VoteAverageStar = movie.VoteAverage * 5 / 10,
                 Favourite = fav,

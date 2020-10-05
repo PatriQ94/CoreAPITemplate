@@ -28,10 +28,10 @@ namespace Services.Services
         /// <summary>
         /// Returns the list of currently most popular movies
         /// </summary>
-        public async Task<List<Movie>> GetByPopularity(string userId)
+        public async Task<List<Movie>> GetByPopularity(string userId, int page)
         {
             //Get list of most popular movies
-            SearchContainer<SearchMovie> results = await _movieClient.GetMoviePopularListAsync();
+            SearchContainer<SearchMovie> results = await _movieClient.GetMoviePopularListAsync(null, page);
 
             //Get users favourite movies from database
             List<int> favourites = await _unitOfWork.UserFavourites.GetFavouriteMoviesByUserAsync(userId);
@@ -46,15 +46,15 @@ namespace Services.Services
         /// <summary>
         /// Returns the list of movies by the searched keyword
         /// </summary>
-        public async Task<List<Movie>> GetByKeyWord(string userId, string searchKeyWord)
+        public async Task<List<Movie>> GetByKeyWord(string userId, string searchKeyWord, int page)
         {
             if (string.IsNullOrEmpty(searchKeyWord))
             {
-                return await GetByPopularity(userId);
+                return await GetByPopularity(userId, page);
             }
 
             //Get list of movies filtered by the search keyword
-            SearchContainer<SearchMovie> results = await _movieClient.SearchMovieAsync(searchKeyWord);
+            SearchContainer<SearchMovie> results = await _movieClient.SearchMovieAsync(searchKeyWord, page);
 
             //Get users favourite movies from database
             List<int> favourites = await _unitOfWork.UserFavourites.GetFavouriteMoviesByUserAsync(userId);
